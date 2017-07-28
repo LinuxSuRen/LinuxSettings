@@ -1,1 +1,1 @@
-echo "set number\n" >> ~/.vimrc
+echo "set number" >> ~/.vimrc
