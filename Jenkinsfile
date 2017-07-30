@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    triggers {
+        pollSCM('H/5 * * * *')
+    }
+    
     environment {
         DEPLOY = 'false'
     }
@@ -17,14 +21,16 @@ pipeline {
 properties([
     [
         $class: 'GithubProjectProperty',
-        displayName: '',
-        projectUrlStr: 'https://github.com/LinuxSuRen/'
+        displayName: 'LinuxSettings',
+        projectUrlStr: 'https://github.com/LinuxSuRen/LinuxSettings'
     ],
     buildDiscarder(
-        logRotator(artifactDaysToKeepStr: '',
-        artifactNumToKeepStr: '',
-        daysToKeepStr: '7',
-        numToKeepStr: '70')
+        logRotator(
+            artifactDaysToKeepStr: '',
+            artifactNumToKeepStr: '',
+            daysToKeepStr: '7',
+            numToKeepStr: '14'
+        )
     ),
     pipelineTriggers([])
 ])
